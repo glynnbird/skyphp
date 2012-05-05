@@ -13,6 +13,9 @@
     // the url where Sky EPG listings come from
     const listingsURL = "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json";
     
+    // the url where Sky Channel lists come from
+    const channelListURL = "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/init.json";
+    
     // some channel ids
     const BBC1_NE = 2155;
     const BBC1_HD = 2076;
@@ -129,8 +132,27 @@
       curl_setopt($ch,CURLOPT_ENCODING , "gzip");
       $output = curl_exec($ch);
       curl_close($ch);
-			return $output;
+      return $output;
 
+    }
+    
+    /**
+     * Get full list of Sky Channels
+     * @return
+     *          channel list as a JSON string
+     */
+    public static function getChannelList() {
+     
+      // fetch channel list
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, SkyPHP::channelListURL);
+      curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+      curl_setopt($ch, CURLOPT_POST, false);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch,CURLOPT_ENCODING , "gzip");
+      $output = curl_exec($ch);
+      curl_close($ch);
+      return $output;
     }
     
   }
