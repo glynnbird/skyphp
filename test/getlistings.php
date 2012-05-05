@@ -3,6 +3,7 @@
 
   require_once("../skyphp.php");
   
-  echo SkyPHP::getListings("2155,2006,6390,1624");
+  $channels = implode(",", array(SkyPHP::BBC1_HD,SkyPHP::BBC2,SkyPHP::ITV1_HD,SkyPHP::CHANNEL4_HD));
+  echo SkyPHP::getListings($channels);
 
 ?>

@@ -1,17 +1,52 @@
 <?php
 
-
+  /**
+  * @skyphp.php
+  *       A library of utility functions to allow Sky EPG data to be used from PHP applications
+  */
+  
+  /**
+  * Definition of the SkyPHP class
+  */
   class SkyPHP {
     
+    // the url where Sky EPG listings come from
     const listingsURL = "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json";
     
-    /*
+    // some channel ids
+    const BBC1_NE = 2155;
+    const BBC1_HD = 2076;
+    const BBC2 = 2006;
+    const BBC3 = 2061;
+    const BBC4 = 2018;
+    const ITV1 = 6390;
+    const ITV1_HD = 6505;
+    const ITV2_HD = 6452;
+    const ITV3_HD = 6533;
+    const ITV4_HD = 6534;
+    const CHANNEL4 = 1624;
+    const CHANNEL4_HD = 4075;
+    const CHANNEL5 = 1829;
+    const CHANNEL5_HD = 4058;
+    const SKY1_HD = 4061;
+    const SKY_ATLANTIC_HD = 4053;
+    const FX_HD = 4023;
+    const FILM4 = 1627;
     
-      @param channelFilter: List of channel ids for filtering.
-      @param duration: Duration in minutes, default 1 day
-      @param time: Start time for the data. Default Current minute. Format - %Y%m%d%H%M, default now
-      @param detail: Level of details required. 2 retrieves short desc. 1 basic data. Not sure about all possible values.
-      
+    /**
+     * Get listings from the Sky EPG service  
+     * @param channelFilter
+     *          List of channel ids for filtering.
+     * @param duration
+     *          Duration in minutes, default 1 day
+     * @param time
+     *          Start time for the data. Default Current minute. Format - %Y%m%d%H%M, default now
+     * @param detail
+     *          Level of details required. 2 retrieves short desc. 1 basic data. Not sure about all possible values.
+     * @return
+     *          Listings details as JSON string
+     */
+    /*  
       {
           "channels": {
               "title": "Sky Comedy",
@@ -53,7 +88,7 @@
       if(!$channelFilter) {
         $channelFilter = "";
       }
-        if(!$duration) {
+      if(!$duration) {
         $duration=24*60;
       }
       if(!$time) {
@@ -94,7 +129,6 @@
       curl_setopt($ch,CURLOPT_ENCODING , "gzip");
       $output = curl_exec($ch);
       curl_close($ch);
-			
 			return $output;
 
     }
