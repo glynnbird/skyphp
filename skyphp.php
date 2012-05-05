@@ -11,10 +11,16 @@
   class SkyPHP {
     
     // the url where Sky EPG listings come from
-    const listingsURL = "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json";
+    const LISTINGS_URL = "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json";
     
     // the url where Sky Channel lists come from
-    const channelListURL = "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/init.json";
+    const CHANNEL_LIST_URL = "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/init.json";
+    
+    // the url where sky users sign in
+    const SIGN_IN_URL = "https://skyid.sky.com/signin/";
+    
+    // the remote record url
+    const REMOTE_RECORD_URL = "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/remoteRecord.json?channelId=%d&eventId=%d&siteId=1";
     
     // some channel ids
     const BBC1_NE = 2155;
@@ -49,42 +55,6 @@
      * @return
      *          Listings details as JSON string
      */
-    /*  
-      {
-          "channels": {
-              "title": "Sky Comedy",
-              "channeltype": "1",
-              "channelid": "1002",
-              "genre": "6",
-              "program": {
-                  "eventid": "492",
-                  "channelid": "1002",
-                  "date": "05/05/12",
-                  "start": "1336205400000",
-                  "dur": "6600",
-                  "title": "The Back-Up Plan",
-                  "shortDesc": "Single and longing for a baby, Jennifer Lopez resorts to artificial insemination. Minutes later she meets her dream man, but how will he react to her secret? Romcom fun. (2010)(100 mins) Also in HD",
-                  "genre": "6",
-                  "subgenre": "4",
-                  "edschoice": "false",
-                  "parentalrating": {
-                      "k": "3",
-                      "v": "12"
-                  },
-                  "widescreen": "",
-                  "sound": {
-                      "k": "3",
-                      "v": "Digital surround sound"
-                  },
-                  "remoteRecordable": "false",
-                  "record": "1",
-                  "scheduleStatus": "PLAYING_NOW",
-                  "blackout": "false",
-                  "movielocator": "null"
-              }
-          }
-      }
-    */
     public static function getListings($channelFilter="", $duration="", $time="", $detail="") {
       
       // defaults
@@ -102,7 +72,7 @@
       }
       
       // construct the url
-      $url = SkyPHP::listingsURL;
+      $url = SkyPHP::LISTINGS_URL;
       $params = "";
       if($channelFilter) {
         $params = "channels=".urlencode($channelFilter);
@@ -145,7 +115,7 @@
      
       // fetch channel list
       $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, SkyPHP::channelListURL);
+      curl_setopt($ch, CURLOPT_URL, SkyPHP::CHANNEL_LIST_URL);
       curl_setopt($ch, CURLOPT_TIMEOUT, 30);
       curl_setopt($ch, CURLOPT_POST, false);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -153,6 +123,31 @@
       $output = curl_exec($ch);
       curl_close($ch);
       return $output;
+    }
+    
+    /**
+     * Calculate the url to remote-record a programme
+     * @param channelid
+     *          the id of the channel to record
+     * @param eventid
+     *          the id of the event to record
+     * @return
+     *          channel list as a JSON string
+     */
+    public static function getRemoteRecordUrl($channelid,$eventid) {
+      // calculate the url
+      return sprintf(SkyPHP::REMOTE_RECORD_URL,
+                      $channelid,
+                      $eventid);
+    }
+    
+    /**
+     * Get the url where users sign in the Sky platform
+     * @return
+     *          sign-in url
+     */
+    public static function getSignInUrl() {
+      return SkyPHP::SIGN_IN_URL;
     }
     
   }
