@@ -106,7 +106,7 @@
       }
       if($duration) {
         $params .= ($params)?"&":"";
-        $params .= "duration=".urlencode($duration);
+        $params .= "dur=".urlencode($duration);
       }
       if($time) {
         $params .= ($params)?"&":"";
