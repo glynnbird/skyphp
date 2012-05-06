@@ -1,6 +1,6 @@
 #!/usr/bin/php -q
 <?php
-  require_once("../skyphp.php");
+  require_once("includes/Sky.php");
 
-  echo SkyPHP::getChannelList();
+  echo Sky::getChannelList();
 ?>

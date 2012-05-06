@@ -13,7 +13,7 @@ This project aims to provide a PHP library to allow the extraction of television
 
 ## What's what?
 
-The main library code is in the "skyphp.php" file at the top of the repository. Some test files are in the test directory.
+The main library code is in the "Sky.php" file in the includes directory of the repository. Some test files are in the test directory.
 
 ```
   cd test

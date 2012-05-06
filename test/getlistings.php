@@ -1,10 +1,10 @@
 #!/usr/bin/php -q
 <?php
 
-  require_once("../skyphp.php");
+  require_once("includes/Sky.php");
   
-  $channels = implode(",", array(SkyPHP::BBC1_HD,SkyPHP::BBC2,SkyPHP::ITV1_HD,SkyPHP::CHANNEL4_HD));
-$channels = implode(",", array(SkyPHP::CHANNEL4_HD)); 
- echo SkyPHP::getListings($channels);
+  $channels = implode(",", array(Sky::BBC1_HD,Sky::BBC2,Sky::ITV1_HD,Sky::CHANNEL4_HD));
+  //$channels = implode(",", array(Sky::CHANNEL4_HD)); 
+  echo Sky::getListings($channels);
 
 ?>

@@ -1,14 +1,14 @@
 <?php
 
   /**
-  * @skyphp.php
+  * @Sky.php
   *       A library of utility functions to allow Sky EPG data to be used from PHP applications
   */
   
   /**
-  * Definition of the SkyPHP class
+  * Definition of the Sky class
   */
-  class SkyPHP {
+  class Sky {
     
     // the url where Sky EPG listings come from
     const LISTINGS_URL = "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/tvlistings.json";
@@ -72,7 +72,7 @@
       }
       
       // construct the url
-      $url = SkyPHP::LISTINGS_URL;
+      $url = Sky::LISTINGS_URL;
       $params = "";
       if($channelFilter) {
         $params = "channels=".urlencode($channelFilter);
@@ -115,7 +115,7 @@
      
       // fetch channel list
       $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, SkyPHP::CHANNEL_LIST_URL);
+      curl_setopt($ch, CURLOPT_URL, Sky::CHANNEL_LIST_URL);
       curl_setopt($ch, CURLOPT_TIMEOUT, 30);
       curl_setopt($ch, CURLOPT_POST, false);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -136,7 +136,7 @@
      */
     public static function getRemoteRecordUrl($channelid,$eventid) {
       // calculate the url
-      return sprintf(SkyPHP::REMOTE_RECORD_URL,
+      return sprintf(Sky::REMOTE_RECORD_URL,
                       $channelid,
                       $eventid);
     }
@@ -147,7 +147,7 @@
      *          sign-in url
      */
     public static function getSignInUrl() {
-      return SkyPHP::SIGN_IN_URL;
+      return Sky::SIGN_IN_URL;
     }
     
   }
