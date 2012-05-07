@@ -23,24 +23,24 @@
     const REMOTE_RECORD_URL = "http://epgservices.sky.com/tvlistings-proxy/TVListingsProxy/remoteRecord.json?channelId=%d&eventId=%d&siteId=1";
     
     // some channel ids
-    const BBC1_NE = 2155;
-    const BBC1_HD = 2076;
-    const BBC2 = 2006;
-    const BBC3 = 2061;
-    const BBC4 = 2018;
-    const ITV1 = 6390;
-    const ITV1_HD = 6505;
-    const ITV2_HD = 6452;
-    const ITV3_HD = 6533;
-    const ITV4_HD = 6534;
-    const CHANNEL4 = 1624;
-    const CHANNEL4_HD = 4075;
-    const CHANNEL5 = 1829;
-    const CHANNEL5_HD = 4058;
-    const SKY1_HD = 4061;
-    const SKY_ATLANTIC_HD = 4053;
-    const FX_HD = 4023;
-    const FILM4 = 1627;
+    const BBC1_NE = "2155";
+    const BBC1_HD = "2076";
+    const BBC2 = "2006";
+    const BBC3 = "2061";
+    const BBC4 = "2018";
+    const ITV1 = "6390";
+    const ITV1_HD = "6505";
+    const ITV2_HD = "6452";
+    const ITV3_HD = "6533";
+    const ITV4_HD = "6534";
+    const CHANNEL4 = "1624";
+    const CHANNEL4_HD = "4075";
+    const CHANNEL5 = "1829";
+    const CHANNEL5_HD = "4058";
+    const SKY1_HD = "4061";
+    const SKY_ATLANTIC_HD = "4053";
+    const FX_HD = "4023";
+    const FILM4 = "1627";
     
     /**
      * Get listings from the Sky EPG service  
