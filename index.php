@@ -14,7 +14,7 @@
   
   
   // channel headers
-  print("<div class=\"channel_header\">&nbsp;</div>");
+  print("<div class=\"time_header\">&nbsp;</div>");
   foreach($channelList as $channel) {
     $chan = $channels->findOne(array( "channelid" => $channel));
     printf("<div class=\"channel_header\">%s&nbsp;</div>\n",$chan['title']);
@@ -22,9 +22,9 @@
   print("<div class=\"scrollable\">\n");
   
   // hour markers
-  print("<div class=\"channel\">\n");
+  print("<div class=\"hour_list\">\n");
   for($i=0;$i<24;$i++){
-    printf("<div class=\"hour_marker\" style=\"height:%dpx\">%02d:00</div>",SkyRender::HEIGHT_FOR_ONE_HOUR,$i);
+    printf("<div class=\"hour_marker\" style=\"height:%dpx\"><div class=\"hour_label\">%02d:00</div></div>",SkyRender::HEIGHT_FOR_ONE_HOUR,$i);
   }
   print("</div>\n");
   

@@ -47,7 +47,7 @@
     
       $html = sprintf("  <div class=\"programme\" style=\"height:%dpx\">\n".
                       "    <div class=\"programme_title\">%s</div>\n".
-                      "    %s\n".
+                      "    <div class=\"programme_body\">%s</div>\n".
                       "  </div>\n",
                       SkyRender::HEIGHT_FOR_ONE_HOUR*$p['dur']/3600,
                       $p['title'],
