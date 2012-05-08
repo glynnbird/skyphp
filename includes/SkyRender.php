@@ -6,7 +6,14 @@
     const HEIGHT_FOR_ONE_HOUR=200;
     
     public static function renderProgramme($p) {
-      /* e.g.
+      
+      $ratings_icons= array("U" => "/images/u.png",
+                            "PG" => "/images/pg.png",
+                            "12" => "/images/12.png",
+                            "12a" => "/images/12a.png",
+                            "15" => "/images/15.png",
+                            "18" => "/images/18.png");
+        /* e.g.
       Array
       (
           [_id] => MongoId Object
@@ -44,14 +51,23 @@
           [movielocator] => null
       )
     */
-    
-      $html = sprintf("  <div class=\"programme\" style=\"height:%dpx\">\n".
+      $rating = $p['parentalrating']['v'];
+      $rating_icon = "";
+      if(array_key_exists($rating,$ratings_icons)) {
+        $rating_icon = sprintf("<img class=\"rating\" src=\"%s\" alt=\"%s\" />\n",
+                          $ratings_icons[$rating],
+                          $rating);
+      }
+      $html = sprintf("  <div class=\"programme\" style=\"height:%dpx\" onclick=\"showPopup(%d)\">\n".
                       "    <div class=\"programme_title\">%s</div>\n".
                       "    <div class=\"programme_body\">%s</div>\n".
+                      "     %s".
                       "  </div>\n",
                       SkyRender::HEIGHT_FOR_ONE_HOUR*$p['dur']/3600,
+                      $p['eventid'],
                       $p['title'],
-                      $p['shortDesc']);
+                      $p['shortDesc'],
+                      $rating_icon);
       return $html;
     
     }

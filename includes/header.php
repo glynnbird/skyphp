@@ -73,6 +73,22 @@
         width:50px;
         float:left;
       }
+      .rating {
+        padding-left:170px;
+      }
+      .remote_record_button {
+        margin-left:10px;
+        display:none;
+        width:28px;
+        height:28px;
+        background:transparent url(/images/rec.jpg);
+      }
     </style>
+    <script type="text/javascript">
+      showPopup = function(eventid) {
+        console.log(eventid);
+      }
+
+    </script>
   </head>
   <body>

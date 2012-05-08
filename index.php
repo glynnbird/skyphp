@@ -6,11 +6,16 @@
   require_once("includes/header.php");
   
   // the list of channels to render
-  $channelList = array(Sky::BBC1_HD,Sky::BBC2,Sky::ITV1_HD,Sky::CHANNEL4_HD,Sky::CHANNEL5_HD);
+  $channelList = array(Sky::BBC1_HD,Sky::BBC2,Sky::ITV1_HD,Sky::CHANNEL4_HD,Sky::CHANNEL5_HD,Sky::FILM4);
+  
+  
+  $day = date("d");
+  $month = date("m");
+  $year = date("y");
   
   // the date to render
   $date = date("d/m/y");
-  $ts= mktime (0,0,0,date("n"),date("j"),date("Y"));
+  $ts= mktime (0,0,0,$month,$day,$year+2000);
   
   
   // channel headers
